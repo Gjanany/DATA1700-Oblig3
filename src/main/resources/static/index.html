@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script defer src="kinobillett.js"></script>
+
+    <title>Kinobillett</title>
+
+</head>
+<body>
+<h1> Bestilling av kinobillett</h1>
+
+<form>
+    <div>
+        <table>
+            <tr><td><label for="film">Velg Film</label></td>
+                <td><select id="film">
+                    <option>Toy Story</option>
+                    <option>Bolt</option>
+                    <option>The Incredibles</option>
+                    <option>Wreck-It Ralph</option>
+                    <option>Tangled</option>
+                    <option>Frozen</option>
+                    <option>Despicable Me</option>
+                    <option>Inside Out</option>
+                </select>
+                </td></tr>
+        </table>
+    </div>
+
+    <div>
+        <table>
+            <tr><td><label for="quantity">Antall</label></td>
+                <td><input type="number" id="quantity" min="1" max="100"
+                           onchange="validateQuantity(this.value)">
+                    <span id="errorQuantity" style="color: darkred"></span></td></tr>
+
+
+            <tr><td><label for="firstname">Fornavn</label></td>
+                <td><input type="text" id="firstname" onchange="validateFirstname(this.value)">
+                    <span id="errorFirstname" style="color: darkred"></span></td></tr>
+
+
+            <tr><td><label for="surname">Etternavn</label></td>
+                <td><input type="text" id="surname" onchange="validateSurname(this.value)">
+                    <span id="errorSurname" style="color: darkred"></span></td></tr>
+
+
+            <tr><td><label for="email">Epost</label></td>
+                <td><input type="text" id="email" onchange="validateEmail(this.value)">
+                    <span id="errorEmail" style="color: darkred"></span></td></tr>
+
+
+            <tr><td><label for="phonenr">Telefonnr</label></td>
+                <td><input type="text" id="phonenr" onchange="validatePhonenr(this.value)">
+                    <span id="errorPhonenr" style="color: darkred"></span></td></tr>
+        </table>
+    </div>
+</form>
+
+<br>
+<button id="button" type="submit" onclick="addToArray();">Kjøp billett</button>
+<h2>Alle billetter</h2>
+<h3>Film Antall Fornavn Etternavn Telefonnr Epost</h3>
+<p id="result"></p>
+
+
+<button type="submit" onclick="deleteArray();">Slett alle billetter</button>
+<p id="ut"> </p>
+</body>
+</html>
