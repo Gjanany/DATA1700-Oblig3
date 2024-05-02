@@ -33,7 +33,7 @@ function populateHTML(kinoArray) {
     document.getElementById("result").innerHTML = html;
     console.log(html);
 
-}
+
  */
 
 function checkValid({data, felt}) {
