@@ -19,12 +19,12 @@ function checkValid({data, field}) {
     /*Henter billetter*/
     function hentBilletter() {
         $.get("/hentAlle", function (films) {
-            formatData(films);
+            table(films);
         });
 
     }
 
-    function formatData(films) {
+    function table(films) {
         let ut = "<table class='table'><th><th>film</th><th>quantity</th><th>firstname</th><th>surname</th><th>email</th><th>phonenr</th>";
         for (const movie of films) {
             ut += "<tr><td>" + movie.film + "</td>" +
@@ -80,8 +80,7 @@ function checkValid({data, field}) {
     }
 
     function slettEnBillett(id) {
-        let url = "/slettEnBillett?id=" + id;
-        $.get(url, function () {
+        $.get("/SlettEnBillett", function () {
             hentBilletter();
         });
     }
