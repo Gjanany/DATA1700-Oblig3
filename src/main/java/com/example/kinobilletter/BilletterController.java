@@ -1,7 +1,6 @@
 package com.example.kinobilletter;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,11 +29,11 @@ public class BilletterController {
         return billetterController.hentEnBillett();
     }
 
-    @GetMapping("/slett")
+    @GetMapping("/slettBilletter")
     public void slettBilletter(){
         billetterController.slettBilletter();
     }
-    @GetMapping("/slettEn")
+    @GetMapping("/slettEnBillett")
     public void slettEnBillett(int id){
         billetterController.slettEnBillett(id);
     }
