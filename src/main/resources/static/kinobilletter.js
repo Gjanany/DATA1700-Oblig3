@@ -64,9 +64,9 @@ function checkValid({data, field}) {
                 phonenr: ph,
 
             };
-            $.post("/lagre", billetter, function () {
+            $.post("/lagreBilletter", billetter, function () {
                 hentBilletter();
-                console.log("lagre billetter");
+
             });
             $("#film").val("-velg film");
             $("#quantity").val("");
