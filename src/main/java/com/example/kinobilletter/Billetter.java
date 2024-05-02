@@ -3,6 +3,7 @@ package com.example.kinobilletter;
 public class Billetter {
 
         private int id;
+        private String film;
         private String antall;
         private String fornavn;
         private String etternavn;
@@ -12,14 +13,12 @@ public class Billetter {
 
         public Billetter(int id, String film, String antall, String fornavn, String etternavn, String epost, String telefonnr) {
             this.id = id;
+            this.film = film;
             this.antall = antall;
             this.fornavn = fornavn;
             this.etternavn = etternavn;
             this.epost = epost;
             this.telefonnr = telefonnr;
-        }
-
-        public Billetter() {
         }
 
         public int getId() {
@@ -30,7 +29,14 @@ public class Billetter {
             this.id = id;
         }
 
-        public String getAntall() {
+    public String getFilm() {
+        return film;
+    }
+    public void setFilm(String film) {
+        this.film = film;
+    }
+
+    public String getAntall() {
             return antall;
         }
 
