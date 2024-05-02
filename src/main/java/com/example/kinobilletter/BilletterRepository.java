@@ -7,6 +7,9 @@ import org.springframework.stereotype.Repository;
 
 
 import java.util.List;
+
+
+@SuppressWarnings("ALL")
 @Repository
 public class BilletterRepository {
 
@@ -14,8 +17,8 @@ public class BilletterRepository {
     private JdbcTemplate db;
 
     public void lagreBilletter(Billetter billetter){
-        String sql= "insert into Billetter (film, antall, fornavn, etternavn, epost, tlfnr) VALUES (?,?,?,?,?)";
-        db.update(sql,billetter.getId(),billetter.getAntall(),billetter.getFornavn(),
+        String sql= "insert into Billetter (id, film, antall, fornavn, etternavn, epost, tlfnr) VALUES (?,?,?,?,?)";
+        db.update(sql,billetter.getId(), billetter.getFilm(), billetter.getAntall(),billetter.getFornavn(),
                 billetter.getEtternavn(),billetter.getEpost(),billetter.getTelefonnr());
     }
 
