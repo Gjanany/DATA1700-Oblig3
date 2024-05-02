@@ -1,4 +1,5 @@
 
+
 function checkValid({data, field}) {
     const field_LC = field.toLowerCase();
     const error = "#" + field_LC + "-error"
