@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script defer src="kinobillett.js"></script>
+    <script src="kinobillett.js"></script>
+    <link rel = "stylesheet" href= "https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"><link>
 
     <title>Kinobillett</title>
 
 </head>
 <body>
-<!-- <h1> Bestilling av kinobillett</h1>
+
+
+ <h1> Bestilling av kinobillett</h1>
 
 <form>
     <div>
@@ -32,34 +35,45 @@
     <div>
         <table>
             <tr><td><label for="quantity">Antall</label></td>
-                <td><input type="number" id="quantity" min="1" max="100"
-                           onchange="validateQuantity(this.value)">
+                <td><input type="number" id="quantity" min="1" max="100">
                     <span id="errorQuantity" style="color: darkred"></span></td></tr>
 
 
             <tr><td><label for="firstname">Fornavn</label></td>
-                <td><input type="text" id="firstname" onchange="validateFirstname(this.value)">
+                <td><input type="text" id="firstname">
                     <span id="errorFirstname" style="color: darkred"></span></td></tr>
 
 
             <tr><td><label for="surname">Etternavn</label></td>
-                <td><input type="text" id="surname" onchange="validateSurname(this.value)">
+                <td><input type="text" id="surname">
                     <span id="errorSurname" style="color: darkred"></span></td></tr>
 
 
             <tr><td><label for="email">Epost</label></td>
-                <td><input type="text" id="email" onchange="validateEmail(this.value)">
+                <td><input type="text" id="email">
                     <span id="errorEmail" style="color: darkred"></span></td></tr>
 
 
             <tr><td><label for="phonenr">Telefonnr</label></td>
-                <td><input type="text" id="phonenr" onchange="validatePhonenr(this.value)">
+                <td><input type="text" id="phonenr">
                     <span id="errorPhonenr" style="color: darkred"></span></td></tr>
         </table>
     </div>
+</form>
+ <button class="buy" onclick="kjopBillett();">Registrer billett</button>
+ </div>
+
+ <div class="deletetickets">
+     <h2>Alle billetene:</h2>
+     <div id="billetter" class="table-responsive"></div>
+     <button class="delete" onclick="slettBilletter()">Slett billettene</button>
+ </div>
+
+</body>
+</html>
 
 
-<br>
+<!-- <br>
 <button id="button" type="submit" onclick="addToArray();">Kjøp billett</button> -->
  <!-- <h2>Alle billetter</h2>
 <h3>Film Antall Fornavn Etternavn Telefonnr Epost</h3>
@@ -68,5 +82,3 @@
 
 <!-- <button type="submit" onclick="deleteArray();">Slett alle billetter</button>
 <p id="ut"> </p> -->
-</body>
-</html>
