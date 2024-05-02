@@ -1,19 +1,20 @@
 
+
 /*Inputvalidering*/
 function checkValid({data, field}) {
     const field_LC = field.toLowerCase();
-    const error = "#" + field_LC + "-error"
+    const invalid = "#" + field_LC + "invalid"
 
     if (data === "") {
-        $(error).html(field + " må fylles.");
+        $(invalid).html(field + " må fylles.");
         return false;
     }
     if (data === ("--Velg " + field_LC + "--")) {
-        $(error).html("Må velges " + field_LC + ".");
+        $(invalid).html("Må velges " + field_LC + " ");
         return false;
     }
 
-    $(error).html("");
+    $(invalid).html("");
     return true;
 
     /*Henter billetter*/
