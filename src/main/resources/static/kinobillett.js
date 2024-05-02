@@ -35,32 +35,98 @@ function populateHTML(kinoArray) {
 
 }
  */
-$ (function(){
-    hentBilletter();
-});
 
-function hentBilletter(){
-    $.get("/hentBilletter", function (dataer){
-        formaterData(dataer)
-    });
-}
-function formaterData(billettdata){
-    let ut = "<select id = 'film'>"+ "<option value=''>Velg film</option>";
-    ut += "<tr><th>Antall</th><th>Fornavn</th><th>Etternavn</th>" +
-        "<th>Epost</th><th>Telefonnummer</th></tr>";
-    for (const billetter of billettdata){
-        ut+= "<tr><td>"+ billetter.antall + "</td><td>" + billetter.fornavn +"</td><td>" +
-            billetter.etternavn + "</td><td>"+ billetter.epost +
-            "</td><td>"+billetter.telefonnr + "</td></tr>"
+function checkValid({data, felt}) {
+    // A couple of variables to avoid repetition
+    const felt_lc = felt.toLowerCase();
+    const error = "#" + felt_lc + "-error"
+
+    if (data === "") {
+        $(error).html(felt + " må fylles.");
+        return false;
     }
-    ut += "</table>";
-    $("#tickettable").html(ut);
-}
+    if (data === ("--Velg " + felt_lc + "--")) {
+        $(error).html("Må velge " + felt_lc + ".");
+        return false;
+    }
 
-function deleteAll(){
-    $.get("/slettBilletter", function(){
-        hentBilletter()
-    });
+    $(error).html("");
+    return true;
+
+    /*Henter billetter*/
+    function hentAlle() {
+        $.get("/hentAlle", function (billetter) {
+            formatData(billetter);
+        });
+
+    }
+
+    function formatData(films) {
+        let ut = "<table class='table table-striped'><th><th>film</th><th>quantity</th><th>firstname</th><th>surname</th><th>email</th><th>phonenr</th>";
+        for (const movie of films) {
+            ut += "<tr><td>" + movie.film + "</td>" +
+                "<td>" + movie.quantity + "</td>" +
+                "<td>" + movie.firstname + "</td>" +
+                "<td>" + movie.surname + "</td>" +
+                "<td>" + movie.email + "</td>" +
+                "<td>" + movie.phonenr + "<td>" +
+                "<button class='delete' onclick='slettEnBillett("+films.id+")'>Slett billetten</button></td></tr>";
+        }
+        ut += "</table>";
+        $("#kjop").html(ut);
+    }
+
+    function kjopBillett() {
+        console.log("button activated")
+        const film = $("#film").val(), qt = $("#quantity").val(), fn = $("#firstname").val(), sn = $("#surname").val(),
+            em = $("#email").val(), ph = $("#phonenr").val();
+
+        let correct =
+            checkValid({data: film, felt: "film"}) *
+            checkValid({data: qt, felt: "quantity"}) *
+            checkValid({data: fn, felt: "firstname"}) *
+            checkValid({data: sn, felt: "surname"}) *
+            checkValid({data: em, felt: "email"}) *
+            checkValid({data: ph, felt: "phonenr"});
+
+        if (correct) {
+            const billetter = {
+                film: film,
+                quantity: qt,
+                firstname: fn,
+                surname: sn,
+                email: em,
+                phonenr: ph,
+
+            };
+            $.post("/lagre", billetter, function () {
+                hentAlle();
+                console.log("lagret billetter");
+            });
+            $("#film").val("-velg film");
+            $("#quantity").val("");
+            $("#firstname").val("");
+            $("#surname").val("");
+            $("#email").val("");
+            $("#phonenr").val("");
+
+
+        }
+        console.log("film reg")
+    }
+
+    function slettEnBillett(id) {
+        let url = "/slettEnBillett?id=" + id;
+        $.get(url, function () {
+            hentAlle();
+        });
+    }
+
+    function slettBilletter() {
+        $.get("/slettBilletter", function () {
+            hentAlle();
+        });
+    }
 }
 /*
     function deleteArray() {
