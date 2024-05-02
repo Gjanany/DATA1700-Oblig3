@@ -1,5 +1,6 @@
 
 
+/*Inputvalidering*/
 function checkValid({data, field}) {
     const field_LC = field.toLowerCase();
     const error = "#" + field_LC + "-error"
@@ -18,14 +19,14 @@ function checkValid({data, field}) {
 
     /*Henter billetter*/
     function hentBilletter() {
-        $.get("/hentAlle", function (billetter) {
-            formatData(billetter);
+        $.get("/hentAlle", function (films) {
+            formatData(films);
         });
 
     }
 
     function formatData(films) {
-        let ut = "<table class='table table-striped'><th><th>film</th><th>quantity</th><th>firstname</th><th>surname</th><th>email</th><th>phonenr</th>";
+        let ut = "<table class='table'><th><th>film</th><th>quantity</th><th>firstname</th><th>surname</th><th>email</th><th>phonenr</th>";
         for (const movie of films) {
             ut += "<tr><td>" + movie.film + "</td>" +
                 "<td>" + movie.quantity + "</td>" +
@@ -38,6 +39,7 @@ function checkValid({data, field}) {
         ut += "</table>";
         $("#kjop").html(ut);
     }
+
 
     function kjopBillett() {
         console.log("button activated")
