@@ -6,7 +6,7 @@ function checkValid({data, field}) {
     const invalid = "#" + field_LC + "invalid"
 
     if (data === "") {
-        $(invalid).html(field + " må fylles.");
+        $(invalid).html(field + " mangler.");
         return false;
     }
     if (data === ("--Velg " + field_LC + "--")) {
@@ -34,7 +34,7 @@ function checkValid({data, field}) {
                 "<td>" + movie.surname + "</td>" +
                 "<td>" + movie.email + "</td>" +
                 "<td>" + movie.phonenr + "<td>" +
-                "<button class='delete' onclick='slettEnBillett("+films.id+")'>Slett billetten</button></td></tr>";
+                "<button class='delete' onclick='slettEnBillett(" + films.id + ")'>Slett billetten</button></td></tr>";
         }
         ut += "</table>";
         $("#kjop").html(ut);
@@ -46,6 +46,7 @@ function checkValid({data, field}) {
         const film = $("#film").val(), qt = $("#quantity").val(), fn = $("#firstname").val(), sn = $("#surname").val(),
             em = $("#email").val(), ph = $("#phonenr").val();
 
+
         let correct =
             checkValid({data: film, felt: "film"}) *
             checkValid({data: qt, felt: "quantity"}) *
@@ -53,6 +54,7 @@ function checkValid({data, field}) {
             checkValid({data: sn, felt: "surname"}) *
             checkValid({data: em, felt: "email"}) *
             checkValid({data: ph, felt: "phonenr"});
+
 
         if (correct) {
             const billetter = {
@@ -68,29 +70,28 @@ function checkValid({data, field}) {
                 hentBilletter();
 
             });
-            $("#film").val("-velg film");
+            $("#film").val("--velg en film");
             $("#quantity").val("");
             $("#firstname").val("");
             $("#surname").val("");
             $("#email").val("");
             $("#phonenr").val("");
 
-
         }
         console.log("film reg")
     }
+}
 
     function slettEnBillett(id) {
         $.get("/SlettEnBillett", function () {
-            hentBilletter();
+            slettEnBillett()
         });
     }
 
     function slettBilletter() {
         $.get("/slettBilletter", function () {
-            hentBilletter();
+            slettBilletter();
         });
-    }
 }
 
 
