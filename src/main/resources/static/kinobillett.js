@@ -1,5 +1,4 @@
 
-
 /*Inputvalidering*/
 function checkValid({data, field}) {
     const field_LC = field.toLowerCase();
