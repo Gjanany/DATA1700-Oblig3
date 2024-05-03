@@ -17,13 +17,13 @@ public class BilletterRepository {
     private JdbcTemplate db;
 
     public void lagreBilletter(Billetter billetter){
-        String sql= "insert into Billetter (id, film, antall, fornavn, etternavn, epost, tlfnr) VALUES (?,?,?,?,?)";
-        db.update(sql,billetter.getId(), billetter.getFilm(), billetter.getAntall(),billetter.getFornavn(),
-                billetter.getEtternavn(),billetter.getEpost(),billetter.getTelefonnr());
+        String sql= "insert into "Billetter" (id, film, quantity, firstname, surname, email, phonenr) VALUES (?,?,?,?,?)";
+        db.update(sql,billetter.getId(), billetter.getFilm(), billetter.getQuantity(),billetter.getFirstname(),
+                billetter.getSurname(),billetter.getEmail(),billetter.getPhonenr());
     }
 
     public List<Billetter> hentBilletter(){
-        String sql = "select * from Billetter order by etternavn";
+        String sql = "select * from Billetter order by surname";
         List<Billetter> allTickets = db.query(sql,new BeanPropertyRowMapper(Billetter.class));
         return allTickets;
     }

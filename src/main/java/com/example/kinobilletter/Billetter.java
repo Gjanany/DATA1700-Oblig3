@@ -4,21 +4,21 @@ public class Billetter {
 
         private int id;
         private String film;
-        private String antall;
-        private String fornavn;
-        private String etternavn;
-        private String epost;
-        private String telefonnr;
+        private String quantity;
+        private String firstname;
+        private String surname;
+        private String email;
+        private String phonenr;
 
 
-        public Billetter(int id, String film, String antall, String fornavn, String etternavn, String epost, String telefonnr) {
+        public Billetter(int id, String film, String quantity, String firstname, String surname, String email, String phonenr) {
             this.id = id;
             this.film = film;
-            this.antall = antall;
-            this.fornavn = fornavn;
-            this.etternavn = etternavn;
-            this.epost = epost;
-            this.telefonnr = telefonnr;
+            this.quantity = quantity;
+            this.firstname = firstname;
+            this.surname= surname;
+            this.email = email;
+            this.phonenr= phonenr;
         }
 
         public int getId() {
@@ -36,39 +36,39 @@ public class Billetter {
         this.film = film;
     }
 
-    public String getAntall() {
-            return antall;
+    public String getQuantity() {
+            return quantity;
         }
 
-        public void setAntall(String antall) {
-            this.antall= antall;
+        public void setQuantity(String quantity) {
+            this.quantity= quantity;
         }
 
-        public String getFornavn() {
-            return fornavn;
+        public String getFirstname() {
+            return firstname;
         }
 
-        public void setFornavn(String fornavn) {
-        this.fornavn = fornavn;
+        public void setFirstname(String firstname) {
+        this.firstname = firstname;
         }
-        public String getEtternavn() {
-            return etternavn;
+        public String getSurname() {
+            return surname;
         }
-        public void setEtternavn(String etternavn) {
-        this.etternavn = etternavn;
+        public void setSurname(String surname) {
+        this.surname = surname;
         }
-        public String getEpost() {
-            return epost;
+        public String getEmail() {
+            return email;
         }
-        public void setEpost(String epost) {
-        this.epost = epost;
+        public void setEmail(String email) {
+        this.email = email;
         }
 
-        public String getTelefonnr() {
-        return telefonnr;
+        public String getPhonenr() {
+        return phonenr;
         }
-        public void setTelefonnr(String telefonnr) {
-            this.telefonnr= telefonnr;
+        public void setPhonenr(String phonenr) {
+            this.phonenr= phonenr;
         }
 
 
