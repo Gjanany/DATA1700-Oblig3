@@ -32,9 +32,7 @@ function hentBilletter(){
                 "<td>" + films.firstname + "</td>" +
                 "<td>" + films.surname + "</td>" +
                 "<td>" + films.email + "</td>" +
-                "<td>" + films.phonenr + "<td>" +
-                "<button> onclick='oppdaterBillett(" + films.id+ ")'Velg</button></td>" +
-                "<td>"+"<button> onclick='slettEnBillett(" + films.id + ")'>Slett valgt</button></td></tr>";
+                "<td>" + films.phonenr + "<td>";
         })
         ut +="</table>";
         document.getElementById("kjop").innerHTML = ut;
