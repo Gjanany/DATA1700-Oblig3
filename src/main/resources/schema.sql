@@ -1,5 +1,5 @@
 
-CREATE TABLE Billetter (
+CREATE TABLE billetter (
                            id INTEGER PRIMARY KEY AUTO_INCREMENT,
                            film VARCHAR (20) NOT NULL,
 
