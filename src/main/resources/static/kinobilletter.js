@@ -9,7 +9,7 @@ function kjopBillett() {
     "phonenr" : document.getElementById("phonenr").value,
     "email": document.getElementById("email").value,
 }
-    $.post("/lagre", billetter, function (filmer) {
+    $.post("/lagre", billetter, function () {
         console.log("sent to base");
         document.getElementById("film").value = "";
         document.getElementById("quantity").value = "";
