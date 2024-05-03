@@ -8,7 +8,7 @@
 <body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="kinobilletter.js"></script>
-<link rel = "style" href= "https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"><link>
+<link rel = "stylesheet" href= "https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"><link>
 
 
 
@@ -33,9 +33,10 @@
     <div>
         <div class = "form group">
             <label for="quantity">Antall</label>
-                <input type="number" id="quantity" min="1" max="100">
+                <input type="number" id="quantity" min=1 max="100">
                     <div id="errorQuantity" style="color: darkred"></div>
             </div>
+
 
         <div class = "form group">
             <label for="firstname">Fornavn</label>
@@ -57,42 +58,25 @@
 
         <div class = "form group">
             <label for="phonenr">Telefonnr</label>
-            <input type="text" id="phonenr">
+            <input type="tel" id="phonenr">
                     <div id="errorPhonenr" style="color: darkred"></div>
         </div>
     </div>
 
 
- <button id ="button" type = "submit" onclick="kjopBillett();">Kjøp billett</button>
-
+ <button id ="button" type = "submit" onclick="kjopBillett();">Kjøp billetter</button>
+    <div>
+        <button id="hent" onclick="hentBilletter()">Hent billetter</button>
+    </div>
 
 <div>
      <h2>Alle billetter:</h2>
      <div id="kjop"></div>
-    <button id="delete" onclick="slettBilletter()">Slett billettene</button>
+    <button id="delete" onclick="slettBilletter()">Slett billetter</button>
  </div>
 </div>
-<div>
-    <h2> Oppdater billetter</h2>
-    <p>ID:</p><p id="tickets"></p>
-    <label>Film</label><br>
-    <input type="text" id="editFilm"><br>
-    <label>Quantity</label><br>
-    <input type="text" id="editQuantity" ><br>
-    <label>Firstname</label><br>
-    <input type="text" id="editFirstname"><br>
-    <label>Surname</label><br>
-    <input type="text" id="editSurname"><br>
-    <label>Phonenr</label><br>
-    <input type="number" id="editPhonenr" ><br>
-    <label>Email</label><br>
-    <input type="email" id="editEmail"><br>
 
-    <br>
-    <button onclick="updateTicket()">Oppdater</button>
-    <br>
-</div>
-</div>
+
 </body>
 </html>
 

@@ -23,7 +23,7 @@ function kjopBillett() {
 }
 
 function hentBilletter(){
-    $.get("/hentAlleBilletter", function (filmer){
+    $.get("/hentBilletter", function (filmer){
         console.log(filmer);
         let ut = "<table class='table table-striped'><tr><th>film</th><th>quantity</th><th>firstname</th><th>surname</th><th>email</th><th>phonenr</th></tr>";
         filmer.forEach(function (films){
@@ -33,48 +33,15 @@ function hentBilletter(){
                 "<td>" + films.surname + "</td>" +
                 "<td>" + films.email + "</td>" +
                 "<td>" + films.phonenr + "<td>" +
-                "<button> onclick='updateBillett(" + films.id+ ")'Velg</button></td>" +
+                "<button> onclick='oppdaterBillett(" + films.id+ ")'Velg</button></td>" +
                 "<td>"+"<button> onclick='slettEnBillett(" + films.id + ")'>Slett valgt</button></td></tr>";
         })
         ut +="</table>";
         document.getElementById("kjop").innerHTML = ut;
     })
 }
-function updateBillett(id){
-    document.getElementById("tickets").innerHTML = id;
-    $.get("/getBilletterFromDB?id=" + id , function (films){
-        document.getElementById("editFilm").value = films.film;
-        document.getElementById("editQuantity").value = films.quantity;
-        document.getElementById("editFirstname").value = films.firstname;
-        document.getElementById("editSurname").value = films.surname;
-        document.getElementById("editEmail").value = films.email;
-        document.getElementById("editPhonenr").value = films.phonenr;
-    })
-    console.log(id);
-}
-
-function updateTicket(){
-   let billetter = {
-        "id": document.getElementById("tickets").innerHTML,
-       "film":document.getElementById("editFilm").value,
-        "quantity":document.getElementById("editQuantity").value,
-        "firstname":document.getElementById("editFirstname").value,
-        "surname":document.getElementById("editSurname").value,
-        "email":document.getElementById("editEmail").value,
-        "phonenr":document.getElementById("editPhonenr").value,
-
-    }
-    console.log( document.getElementById("tickets").value);
-    console.log(billett);
-    $.post("/updateBilletter", billetter, function (movies){})
-}
-function slettEnBillett(id){
-    $.get("/slettEnBillett", function (){
-        hentBilletter();
-    })
-}
 function slettBilletter() {
-    $.get("/slettAlle", function () {
+    $.get("/slettBilletter", function () {
         hentBilletter();
     });
 }
