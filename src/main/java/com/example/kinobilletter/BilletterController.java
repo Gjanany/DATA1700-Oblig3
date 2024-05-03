@@ -13,29 +13,25 @@ public class BilletterController {
 
 
     @Autowired
-    BilletterController billetterController;
+    BilletterRepository rep;
 
     @PostMapping("/lagreBilletter")
     public void lagreBilletter(Billetter billetter){
-       billetterController.lagreBilletter(billetter);
+       rep.lagreBilletter(billetter);
     }
 
     @GetMapping("/hentBilletter")
     public List<Billetter> hentBilletter(){
-        return billetterController.hentBilletter();
-    }
-    @GetMapping("/hentEnBillett")
-    public List<Billetter> hentEnBillett(){
-        return billetterController.hentEnBillett();
+        return rep.hentBilletter();
     }
 
     @GetMapping("/slettBilletter")
     public void slettBilletter(){
-        billetterController.slettBilletter();
+        rep.slettBilletter();
     }
     @GetMapping("/slettEnBillett")
     public void slettEnBillett(int id){
-        billetterController.slettEnBillett(id);
+        rep.slettEnBillett(id);
     }
 }
 
