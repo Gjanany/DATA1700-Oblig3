@@ -17,8 +17,8 @@ function kjopBillett() {
         document.getElementById("surname").value = "";
         document.getElementById("email").value = "";
         document.getElementById("phonenr").value = "";
-    }).fail(function (xhr, status, error) {
-        console.error("error, could send not to base", error)
+    }).fail(function (error) {
+        console.error("could send not to base", error)
     });
 }
 
