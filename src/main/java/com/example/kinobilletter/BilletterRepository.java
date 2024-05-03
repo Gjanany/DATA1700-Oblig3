@@ -28,9 +28,14 @@ public class BilletterRepository {
         return allTickets;
     }
 
+
     public void slettBilletter(){
         String sql = "delete from Billetter";
         db.update(sql);
+    }
+
+    public void slettEnBillett(int id){
+        String sql = "delete from Billetter where id= ?";
     }
 
 
