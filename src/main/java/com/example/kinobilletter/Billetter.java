@@ -21,13 +21,15 @@ public class Billetter {
             this.phonenr= phonenr;
         }
 
-        public int getId() {
-            return id;
+        public Billetter(){
         }
+    public int getId() {
+        return id;
+    }
 
-        public void setId(int id) {
-            this.id = id;
-        }
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getFilm() {
         return film;
